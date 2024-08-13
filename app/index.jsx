@@ -3,7 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
-import Animated, { FadeIn, FadeInDown, FadeOut } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeInDown, FadeOut, StretchInX, StretchOutY } from 'react-native-reanimated';
 import { useRouter } from 'expo-router';
  
 const Index = () => { 

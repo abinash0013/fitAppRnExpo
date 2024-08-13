@@ -1,8 +1,8 @@
 
 
-export const rapidApiKey = '0fcd233ea0msh3ce8583d6056a46p1abd41jsnb4b7f1359c24'
-
+export const host = 'exercisedb.p.rapidapi.com'
 export const baseUrl = 'https://exercisedb.p.rapidapi.com'
+export const rapidApiKey = '0fcd233ea0msh3ce8583d6056a46p1abd41jsnb4b7f1359c24'
 
 export const bodyParts = [
   {
@@ -43,10 +43,10 @@ export const bodyParts = [
   },
 ]
 
-// export const sliderImages = [
-//   require('./../assets/images/slide1.png'),
-//   require('./../assets/images/slide2.png'),
-//   require('./../assets/images/slide3.png'),
-//   require('./../assets/images/slide4.png'),
-//   require('./../assets/images/slide5.png')
-// ]
+export const sliderImages = [
+  require('./../assets/images/slide1.png'),
+  require('./../assets/images/slide2.png'),
+  require('./../assets/images/slide3.png'),
+  require('./../assets/images/slide4.png'),
+  require('./../assets/images/slide5.png'),
+]

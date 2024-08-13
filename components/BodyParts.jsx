@@ -2,20 +2,22 @@ import { useRouter } from 'expo-router';
 import { bodyParts } from '../constants' 
 import { LinearGradient } from 'expo-linear-gradient'; 
 import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
+import Animated, { FadeIn, FadeInDown, FadeOut, FadeInRight, withSequence, withTiming  } from 'react-native-reanimated';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 
 export default function BodyParts() {
   const router = useRouter()
 
   return (
     <View className="mx-4">
-      <Text style={{fontSize: hp(3)}} className="font-bold text-neutral-700">Exercises</Text>
-
+      <Animated.Text entering={FadeInRight.delay(200).springify()} style={{fontSize: hp(3)}} className="font-bold text-neutral-700">Exercises</Animated.Text>
+      
       <FlatList
         data={bodyParts}
         numColumns={2}
         keyExtractor={item=>item.name}
-        showsVerticalScrollIndicator={false}
+        showsVerticalScrollIndicator={false} 
         contentContainerStyle={{paddingBottom: 50, paddingTop: 20}}
         columnWrapperStyle={{
           justifyContent: 'space-between',
@@ -27,13 +29,11 @@ export default function BodyParts() {
 }
 
 const BodyPartsCard = ({item, router, index}) => { 
-
   const handleMoveToExerciseScreen = () => {
     router.push({pathname: '/exercises', params: item}) 
   }
-
   return ( 
-    <View>
+    <Animated.View entering={FadeInDown.delay(200).springify()}>
       <TouchableOpacity
         style={{width: wp(44), height: wp(52)}}
         className="flex justify-end p-4 mb-4"
@@ -59,6 +59,6 @@ const BodyPartsCard = ({item, router, index}) => {
           {item?.name}
         </Text>
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   )
 }

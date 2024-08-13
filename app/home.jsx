@@ -4,6 +4,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Image, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import Animated, { FadeIn, FadeInDown, FadeOut, FadeInRight, withSequence, withTiming, StretchInX, StretchOutY  } from 'react-native-reanimated';
+
 import BodyParts from '../components/BodyParts';
 
 const Home = () => {
@@ -12,9 +14,7 @@ const Home = () => {
       <StatusBar style="dark" />
       <View className="flex-row justify-between item-center mx-5">
         <View className="space-y-2">
-          <Text className="font-bold tracking-wider text-neutral-700" style={{fontSize: hp(4.5)}}>Abinash</Text>
-          {/* <Text className="font-bold tracking-wider text-neutral-700" style={{fontSize: hp(4.5)}}>Ready To</Text>
-          <Text className="font-bold tracking-wider text-rose-500" style={{fontSize: hp(4.5)}}>Workout</Text> */}
+          <Text className="font-bold tracking-wider text-neutral-700" style={{fontSize: hp(4.5)}}>Abinash</Text> 
         </View>
         <View className="flex-row justify-between items-center">          
           <View 
@@ -22,7 +22,7 @@ const Home = () => {
             style={{height: hp(5.5), width: hp(5.5)}}
           >
             <Ionicons name="notifications" size={hp(3)} color="gray" />
-          </View>
+          </View> 
           <Image
             source={require('./../assets/images/avatar.png')}
             style={{height: hp(5.5), width: hp(5.5)}}
@@ -30,12 +30,12 @@ const Home = () => {
           />
         </View>
       </View>
-      <View className="flex justify-center items-center">
-        <Image source={require('./../assets/images/slide1.png')}           
-          resizeMode='cover'
-          style={{width: wp(90), height: wp(52) }}
-          className="rounded-[15px]"
-        />
+      <View className="flex justify-center items-center"> 
+      <Animated.Image entering={StretchInX} exiting={StretchOutY} source={require('./../assets/images/slide1.png')}
+        resizeMode='cover'
+        style={{width: wp(90), height: wp(52) }}
+        className="rounded-[15px]"
+      />
       </View>
       <View className="flex-1">
         <BodyParts />
