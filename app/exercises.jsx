@@ -8,6 +8,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ExerciseList from '../components/ExerciseList';
 import { ScrollView } from 'react-native-virtualized-view';
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 
 export default function Exercises() {
    
@@ -20,7 +21,7 @@ export default function Exercises() {
   const getExerciseByBodyPart = useCallback(async () => {
     try {
       const res = await makeRequest.get("/exercises/bodyPart/" + bodyPartParam)
-      console.log("resLog",res.data)
+      // console.log("resLog",res.data)
       setBodyPart(res.data)
     } catch (error) {
       console.log(error)
@@ -34,10 +35,11 @@ export default function Exercises() {
   return (
     <ScrollView>
       <StatusBar style="light" />
-      <Image 
+      <Animated.Image 
         source={localSearchParam.image}
         style={{width: wp(100), height: hp(45) }}
         className="rounded-b-[40px]"
+        // entering={FadeInUp.delay(200).springify()}
       />
       <TouchableOpacity 
         onPress={()=>router.back()}
@@ -45,7 +47,6 @@ export default function Exercises() {
         style={{marginTop: hp(7), height: hp(5), width: hp(5)}}>
         <Ionicons name="caret-back-outline" size={hp(4)} color="white" />
       </TouchableOpacity>
-
       <View className="mx-4 space-y-3 at-4">
         <Text style={{fontSize: hp(3)}} className='font-semibold text-neutral-700'>
           {localSearchParam.name} exercises

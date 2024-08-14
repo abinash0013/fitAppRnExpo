@@ -2,9 +2,9 @@ import { useRouter } from 'expo-router';
 import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Animated, { FadeIn, FadeInDown, FadeOut, FadeInRight, withSequence, withTiming, StretchInX, StretchOutY  } from 'react-native-reanimated';
-import { Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Text } from 'react-native';
+import { Image } from 'expo-image';
 
 const ExerciseList = ({data}) => {
   const router = useRouter()
@@ -30,12 +30,12 @@ const ExerciseCard = ({item, router, index}) => {
     router.push({pathname: 'exerciseDetails', params: item})
   }
   return ( 
-    <View>
+    <Animated.View entering={FadeInDown.duration(400).delay(index*200).springify().damping(7)}>
       <TouchableOpacity 
         onPress={handleExerciseDetails}
         className="flex py-3 space-y-2">
         <View className="bg-red-200 shadow rounded-[25px]"> 
-          <Image 
+          <Image
             source={{uri: item.gifUrl}} 
             contentFit="cover"
             style={{width: wp(44), height: wp(52)}}
@@ -51,7 +51,7 @@ const ExerciseCard = ({item, router, index}) => {
           }
         </Text>
       </TouchableOpacity>
-    </View> 
+    </Animated.View> 
   )
 }
 

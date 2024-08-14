@@ -11,8 +11,8 @@ export default function BodyParts() {
 
   return (
     <View className="mx-4">
-      <Animated.Text entering={FadeInRight.delay(200).springify()} style={{fontSize: hp(3)}} className="font-bold text-neutral-700">Exercises</Animated.Text>
-      
+      {/* <Animated.Text entering={FadeInRight.delay(400).springify()} style={{fontSize: hp(3)}} className="font-bold text-neutral-700">Exercises</Animated.Text> */}
+      <Text style={{fontSize: hp(3)}} className="font-bold text-neutral-700">Exercises</Text>
       <FlatList
         data={bodyParts}
         numColumns={2}
@@ -33,7 +33,7 @@ const BodyPartsCard = ({item, router, index}) => {
     router.push({pathname: '/exercises', params: item}) 
   }
   return ( 
-    <Animated.View entering={FadeInDown.delay(200).springify()}>
+    <Animated.View entering={FadeInDown.duration(400).delay(index*200).springify().damping(7)}>
       <TouchableOpacity
         style={{width: wp(44), height: wp(52)}}
         className="flex justify-end p-4 mb-4"
